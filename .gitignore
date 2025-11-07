@@ -1,0 +1,6 @@
+# Ignorar la carpeta de archivos subidos por el usuario
+/www/uploads/
+
+# Ignorar archivos de sistema operativo (opcional pero recomendado)
+.DS_Store
+Thumbs.db

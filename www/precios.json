@@ -1,0 +1,19 @@
+{
+  "materiales": {
+    "pla": 0.3125,
+    "abs": 0.30,
+    "petg": 0.30,
+    "tpu": 0.90,
+    "onyx": 6.37,
+    "resina_transparente_flexible": 1.60,
+    "resina_tipo_abs": 0.50,
+    "resina_estandar": 0.40
+   
+
+  },
+  "margenes": {
+    "consumible": 0.015,
+    "operacion": 0.02,
+    "indirectos": 0.30
+  }
+}

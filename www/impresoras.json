@@ -1,0 +1,43 @@
+{
+  "markforged": {
+    "nombre": "Markforged",
+    "vida_util_horas": 36500,
+    "costo_impresora": 99480.60,
+    "materiales": {
+      "onyx": "Onyx"
+    }
+  },
+  "elegoo": {
+    "nombre": "Elegoo",
+    "vida_util_horas": 2000,
+    "costo_impresora": 15430.32,
+    "materiales": {
+      "resina_transparente_flexible": "Resina transparente flexible",
+      "resina_tipo_abs": "Resina tipo ABS",
+      "resina_estandar": "Resina estándar"
+    }
+  },
+  "kingroon": {
+    "nombre": "Kingroon",
+    "vida_util_horas": 78000,
+    "costo_impresora": 8120,
+    "materiales": {
+      "pla": "PLA",
+      "abs": "ABS",
+      "petg": "PETG",
+      "tpu": "TPU"
+    }
+  },
+  "creality": {
+    "nombre": "Creality",
+    "vida_util_horas": 2500,
+    "costo_impresora": 23326.44,
+    "materiales": {
+      "pla": "PLA",
+      "abs": "ABS",
+      "petg": "PETG",
+      "tpu": "TPU"
+    }
+  }
+  
+}

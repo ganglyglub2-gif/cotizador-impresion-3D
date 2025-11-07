@@ -1,0 +1,12 @@
+services:
+  web:
+    build: .
+    container_name: printer3d
+    ports:
+      - "8080:80"
+    volumes:
+      - ./www:/var/www/html
+      - ./profiles:/app/profiles
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini  # <-- Agregado para subir archivos grandes
+    stdin_open: true
+    tty: true
