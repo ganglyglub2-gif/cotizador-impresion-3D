@@ -21,6 +21,7 @@ Asegúrate de tener instalado el siguiente software en tu computadora:
 Sigue estos comandos en tu terminal:
 
 **1.Clonar el repositorio**
+
 Descarga el código fuente desde GitHub.
 git clone [https://github.com/ganglyglub2-gif/cotizador-impresion-3D.git](https://github.com/ganglyglub2-gif/cotizador-impresion-3D.git)
 
