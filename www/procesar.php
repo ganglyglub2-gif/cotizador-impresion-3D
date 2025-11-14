@@ -10,22 +10,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $gcodePath = $uploadDir . pathinfo($_FILES['stl_file']['name'], PATHINFO_FILENAME) . ".gcode";
 
         if (!move_uploaded_file($_FILES['stl_file']['tmp_name'], $stlPath)) {
-            echo '<div class="card-resultado error">❌ Error al mover el archivo.</div>';
+            echo '<div class="alert alert-danger">Error al mover el archivo.</div>';
             exit;
         }
 
-        // Ejecutar el slicer (PrusaSlicer o script JS)
         $cmd = "node /var/www/html/runPrusa.js " . escapeshellarg($stlPath);
         exec($cmd, $output, $return_var);
 
         if ($return_var !== 0 || empty($output)) {
-            echo '<div class="card-resultado error">⚠️ Error al generar G-code:<br>' . implode("<br>", $output) . '</div>';
+            echo '<div class="alert alert-danger"><b>Error al generar G-code:</b><br>' . implode("<br>", $output) . '</div>';
             exit;
         }
 
         $result = json_decode($output[0], true);
         if (!$result) {
-            echo '<div class="card-resultado error">⚠️ No se pudo leer la información del G-code.</div>';
+            echo '<div class="alert alert-danger">No se pudo leer la información del G-code.</div>';
             exit;
         }
 
@@ -52,47 +51,173 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // --- MOSTRAR RESULTADOS ---
         echo '
-<div class="resultado-dos-columnas">
-    <div class="card-resultado">
-        <h3>📊 Datos Base</h3>
-        <div class="res-item"><strong>Filamento usado:</strong> ' . number_format($filamento_mm, 2) . ' mm</div>
-        <div class="res-item"><strong>Volumen usado:</strong> ' . number_format($filamento_cm3, 2) . ' cm³</div>
-        <div class="res-item"><strong>Tiempo estimado:</strong> ' . htmlspecialchars($tiempo_estimado) . '</div>
+        <div class="cotizacion-estimada-container">
+            <div class="titulo-seccion-subrayado mb-4">
+                <h3>COTIZACIÓN ESTIMADA</h3>
+            </div>
+            
+            <div class="row mb-3">
+                
+                <div class="col-md-6">
+                    <div class="row no-gutters">
+                        <div class="col-4">
+                            <div class="badge-estimado-titulo">Impresora:</div>
+                        </div>
+                        <div class="col-8">
+                            <div class="badge-estimado-valor">' . htmlspecialchars(ucfirst($impresoraSeleccionada)) . '</div>
+                        </div>
+                    </div>
+                </div>
 
-        <hr>
-        <h3>🛡️ Con Margen de Seguridad (10%)</h3>
-        <div class="res-item"><strong>Filamento usado (seguridad):</strong> ' . number_format($filamento_mm_seg, 2) . ' mm</div>
-        <div class="res-item"><strong>Volumen usado (seguridad):</strong> ' . number_format($filamento_cm3_seg, 2) . ' cm³</div>
-        <div class="res-item"><strong>Tiempo estimado (seguridad):</strong> ' . htmlspecialchars($tiempo_seg) . '</div>
-    </div>
+                <div class="col-md-6">
+                    <div class="row no-gutters">
+                        <div class="col-4">
+                            <div class="badge-estimado-titulo">Material:</div>
+                        </div>
+                        <div class="col-8">
+                            <div class="badge-estimado-valor">' . htmlspecialchars(ucfirst($materialSeleccionado)) . '</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <div class="card-resultado">
-        <h3>💰 Cotización Estimada</h3>
-        <div class="res-item"><strong>Impresora:</strong> ' . htmlspecialchars(ucfirst($impresoraSeleccionada)) . '</div>
-        <div class="res-item"><strong>Material:</strong> ' . htmlspecialchars(ucfirst($materialSeleccionado)) . '</div>
-        <hr>
-        <div class="res-item">• Costo Material: <strong>' . number_format($cotizacion['costo_material'], 2) . ' MXN</strong></div>
-        <div class="res-item">• Costo Tiempo: <strong>' . number_format($cotizacion['costo_tiempo'], 2) . ' MXN</strong></div>
-        <div class="res-item">• Subtotal Producción: ' . number_format($cotizacion['subtotal_produccion'], 2) . ' MXN</div>
-        <div class="res-item">• Consumible Impresión: ' . number_format($cotizacion['consumible_impresion'], 2) . ' MXN</div>
-        <div class="res-item">• Costo Operación: ' . number_format($cotizacion['costo_operacion'], 2) . ' MXN</div>
-        <div class="res-item">• Subtotal Operación: ' . number_format($cotizacion['subtotal_operacion'], 2) . ' MXN</div>
-        <div class="res-item">• Costo Final: ' . number_format($cotizacion['costo_final_impresion'], 2) . ' MXN</div>
-        <div class="res-item">• Indirectos: ' . number_format($cotizacion['indirectos'], 2) . ' MXN</div>
-        <hr>
-        <div class="total">💵 Precio Final Estimado: ' . number_format($cotizacion['precio_final'], 2) . ' MXN</div>
-        <div class="acciones">
-            <a href="uploads/' . htmlspecialchars(basename($gcodePath)) . '" class="boton-descargar" download>⬇️ Descargar G-code</a>
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table table-sm table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th width="60%">Concepto</th>
+                                <th width="40%" class="text-right">Importe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Costo del Material</td>
+                                <td class="text-right">$' . number_format($cotizacion['costo_material'], 2) . '</td>
+                            </tr>
+                            <tr>
+                                <td>Costo del Tiempo</td>
+                                <td class="text-right">$' . number_format($cotizacion['costo_tiempo'], 2) . '</td>
+                            </tr>
+                            <tr>
+                                <td>Subtotal de Producción</td>
+                                <td class="text-right">$' . number_format($cotizacion['subtotal_produccion'], 2) . '</td>
+                            </tr>
+                            <tr>
+                                <td>Consumible de Impresión</td>
+                                <td class="text-right">$' . number_format($cotizacion['consumible_impresion'], 2) . '</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+               <div class="col-md-6">
+                    <table class="table table-sm table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th width="60%">Concepto</th>
+                                <th width="40%" class="text-right">Importe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Costo de Operación</td>
+                                <td class="text-right">$' . number_format($cotizacion['costo_operacion'], 2) . '</td>
+                            </tr>
+                            <tr>
+                                <td>Subtotal de Operación</td>
+                                <td class="text-right">$' . number_format($cotizacion['subtotal_operacion'], 2) . '</td>
+                            </tr>
+                            <tr>
+                                <td>Costo Final</td>
+                                <td class="text-right">$' . number_format($cotizacion['costo_final_impresion'], 2) . '</td>
+                            </tr>
+                            <tr>
+                                <td>Indirectos</td>
+                                <td class="text-right">$' . number_format($cotizacion['indirectos'], 2) . '</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row text-center mt-3">
+                <div class="col-12">
+                    <h4 class="font-weight-bold">Precio Final Estimado:</h4>
+                    <h3 class="precio-final-grande">$' . number_format($cotizacion['precio_final'], 2) . ' MXN</h3>
+                    <a href="uploads/' . htmlspecialchars(basename($gcodePath)) . '" class="btn btn-success" download>
+                        <i class="ing-guardar"></i>&nbsp; Descargar G-code
+                    </a>
+                </div>
+            </div>
+        <hr>';
+
+        // ========= 2. BLOQUE DE ACORDEONES (REESTRUCTURADO LADO A LADO) =========
+        echo '
+        <div class="row accordion-custom">
+        
+            <div class="col-md-6">
+                <div id="accordionDatosBase">
+                    <div class="card">
+                        <div class="card-header" id="headingDatosBase">
+                            <h1 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseDatosBase" aria-expanded="false" aria-controls="collapseDatosBase">
+                                    <strong>Datos Base (del Slicer)</strong>
+                                </button>
+                            </h1>
+                        </div>
+                        <div id="collapseDatosBase" class="collapse" aria-labelledby="headingDatosBase" data-parent="#accordionDatosBase">
+                            <div class="card-body">
+                                <ul class="list-unstyled accordion-list">
+                                    <li><span>Filamento usado:</span> <span>' . number_format($filamento_mm, 2) . ' mm</span></li>
+                                    <li><span>Volumen usado:</span> <span>' . number_format($filamento_cm3, 2) . ' cm³</span></li>
+                                    <li><span>Tiempo estimado:</span> <span>' . htmlspecialchars($tiempo_estimado) . '</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div id="accordionMargen">
+                    <div class="card">
+                        <div class="card-header" id="headingMargen">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseMargen" aria-expanded="false" aria-controls="collapseMargen">
+                                    Margen de Seguridad (10%)
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseMargen" class="collapse" aria-labelledby="headingMargen" data-parent="#accordionMargen">
+                            <div class="card-body">
+                                <ul class="list-unstyled accordion-list">
+                                    <li><span>Filamento (seguridad):</span> <span>' . number_format($filamento_mm_seg, 2) . ' mm</span></li>
+                                    <li><span>Volumen (seguridad):</span> <span>' . number_format($filamento_cm3_seg, 2) . ' cm³</span></li>
+                                    <li><span>Tiempo (seguridad):</span> <span>' . htmlspecialchars($tiempo_seg) . '</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>';
+        ';
+        // --- FIN DEL BLOQUE REEMPLAZADO ---
+
 
         // === VISUALIZADOR 3D ===
         echo '
-<div id="model" style="width: 100%; height: 500px; margin-top: 20px; background: #111;"></div>
+        <div class="mt-4">
+        <div class="titulo-seccion-subrayado mb-4">
+        <h3>VISUALIZADOR</h3>
+        </div>
+        <div id="model" style="width: 100%; height: 500px; background: #f7f7f7 !important; border: 1px solid #dee2e6; border-radius: 8px;"></div>
+        </div>
 
-<div class="controles-info" style="width: 100%; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; margin-top: 10px; text-align: left; font-size: 0.9em; line-height: 1.6;">
-    <h4 style="margin: 0 0 10px 0; text-align: center; font-size: 1.1em;"> Controles del Visor 3D</h4>
+
+<div class="controles-info" style="width: 100%; background: rgba(0,0,0,0.05); padding: 15px; border-radius: 8px; margin-top: 10px; text-align: left; font-size: 1rem; line-height: 1.6; border: 1px solid #dee2e6;">
+    <h4 style="margin: 0 0 10px 0; text-align: center; font-size: 1.25rem;">Controles del Visor 3D</h4>
     <ul style="margin: 0; padding-left: 20px; list-style-type: disc;">
         <li><strong>Girar Modelo (Orbitar):</strong> Clic Izquierdo + Arrastrar</li>
         <li><strong>Mover Cámara (Pan):</strong> Clic Derecho + Arrastrar</li>
@@ -102,21 +227,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 ';
 
-       
+        // === DIV OCULTO  ===
         $stlUrl = 'uploads/' . htmlspecialchars(basename($stlPath));
         echo '<div id="stl-data-url" data-url="' . $stlUrl . '" style="display: none;"></div>';
 
 
-        
-
     } else {
-        echo '<div class="card-resultado error">❌ No se recibió un archivo STL válido.</div>';
+        echo '<div class="alert alert-danger">No se recibió un archivo STL válido.</div>';
     }
 } else {
-    echo '<div class="card-resultado error">⚠️ Método no permitido.</div>';
+    echo '<div class="alert alert-warning">Método no permitido.</div>';
 }
 
-// --- FUNCIONES AUXILIARES ---
+// --- FUNCIONES AUXILIARES  ---
 function ajustarTiempo($tiempo_str, $porcentaje) {
     preg_match_all("/(\\d+)([hms])/", $tiempo_str, $matches, PREG_SET_ORDER);
     $segundos = 0;

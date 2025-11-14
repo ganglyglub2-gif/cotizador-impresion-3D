@@ -1,0 +1,153 @@
+/* 
+    Created on : 5/12/2018, 01:25:27 PM
+    Author     : Alejandro
+    Indivisa Fonts
+*/
+
+@font-face {
+    font-family: 'indivisa-title';
+    src: url('../fonts/indivisaFont/eot/IndivisaTextSans-BoldItalic.eot');
+    src:
+         url('../fonts/indivisaFont/woff/IndivisaTextSans-BoldItalic.woff'),
+         url('../fonts/indivisaFont/ttf/IndivisaTextSans-BoldItalic.ttf') ,
+         url('../fonts/indivisaFont/eot/IndivisaTextSans-BoldItalic.IndivisaTextSans-BoldItalic');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'indivisa-text';
+    src: url('../fonts/indivisaFont/eot/IndivisaTextSans-Regular.eot');
+    src:
+         url('../fonts/indivisaFont/woff/IndivisaTextSans-Regular.woff'),
+         url('../fonts/indivisaFont/ttf/IndivisaTextSans-Regular.ttf'),
+         url('../fonts/indivisaFont/eot/IndivisaTextSans-Regular.svg#IndivisaTextSans-Regular');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'indivisa-text-black';
+    src: url('../fonts/indivisaFont/eot/IndivisaTextSans-Black.eot');
+    src:
+         url('../fonts/indivisaFont/woff/IndivisaTextSans-Black.woff'),
+         url('../fonts/indivisaFont/ttf/IndivisaTextSans-Black.ttf'),
+         url('../fonts/indivisaFont/eot/IndivisaTextSans-Black.svg#IndivisaTextSans-Black');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'indivisa-text-bold';
+    src: url('../fonts/indivisaFont/eot/IndivisaTextSans-Bold.eot');
+    src:
+         url('../fonts/indivisaFont/woff/IndivisaTextSans-Bold.woff'),
+         url('../fonts/indivisaFont/ttf/IndivisaTextSans-Bold.ttf'),
+         url('../fonts/indivisaFont/eot/IndivisaTextSans-Bold.svg#IndivisaTextSans-Bold');
+    font-weight: normal;
+    font-style: normal;
+}
+.indivisa-display{font-family: 'indivisa-display' !important;}
+.indivisa-title{font-family: 'indivisa-title' !important;}
+
+/* INGENIERIA FONT */
+@font-face {
+  font-family: 'ingfont';
+  src:  url('../fonts/ingenieria/ingfont.eot?1fng03');
+  src:  url('../fonts/ingenieria/ingfont.eot?1fng03#iefix') format('embedded-opentype'),
+    url('../fonts/ingenieria/ingfont.ttf?1fng03') format('truetype'),
+    url('../fonts/ingenieria/ingfont.woff?1fng03') format('woff'),
+    url('../fonts/ingenieria/ingfont.svg?1fng03#ingfont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+
+.ing-lg{font-size:1.33333em;line-height:.75em;vertical-align:-.0667em}.ing-2x{font-size:2em}.ing-3x{font-size:3em}.ing-8x{font-size:8em}
+.ing-fw{text-align:center;width:1.4em}/*1.25*/
+.ing-ul{list-style-type:none;margin-left:2.5em;padding-left:0}.ing-ul>li{position:relative}.ing-li{left:-2em;position:absolute;text-align:center;width:2em;line-height:inherit}
+.ing-rotate-90{-ms-filter:"progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";-webkit-transform:rotate(90deg);transform:rotate(90deg)}.ing-rotate-180{-ms-filter:"progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";-webkit-transform:rotate(180deg);transform:rotate(180deg)}.ing-rotate-270{-ms-filter:"progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";-webkit-transform:rotate(270deg);transform:rotate(270deg)}.ing-flip-horizontal{-ms-filter:"progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";-webkit-transform:scaleX(-1);transform:scaleX(-1)}.ing-flip-vertical{-webkit-transform:scaleY(-1);transform:scaleY(-1)}.ing-flip-both,.ing-flip-horizontal.ing-flip-vertical,.ing-flip-vertical{-ms-filter:"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)"}.ing-flip-both,.ing-flip-horizontal.ing-flip-vertical{-webkit-transform:scale(-1);transform:scale(-1)}:root .ing-flip-both,:root .ing-flip-horizontal,:root .ing-flip-vertical,:root .ing-rotate-90,:root .ing-rotate-180,:root .ing-rotate-270{-webkit-filter:none;filter:none}
+
+[class^="ing-"], [class*=" ing-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'ingfont' !important;  speak: never;  font-style: normal;  font-weight: normal;  font-variant: normal;  text-transform: none;  line-height: 1;display: inline-block;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ing-fb1:before {content: "\e932";}
+.ing-fb2:before {  content: "\e933";}
+.ing-tw1:before {  content: "\e912";}
+.ing-tw2:before {  content: "\e900";}
+.ing-in1:before {  content: "\e91a";}
+.ing-in2:before {  content: "\e902";}
+.ing-instra1:before {  content: "\e924";}
+.ing-instra2:before {  content: "\e923";}
+.ing-youtube:before {  content: "\e90e";}
+.ing-telefono:before {  content: "\e911";}
+.ing-mail:before {  content: "\e907";}
+.ing-link:before {  content: "\e919";}
+.ing-ubicacion:before {  content: "\e908";}
+.ing-puntos:before {  content: "\e917";}
+.ing-usuario:before {  content: "\e90d";}
+.ing-pass:before {  content: "\e906";}
+.ing-menu:before {  content: "\e901";}
+.ing-salir:before {  content: "\e90f";}
+.ing-flecha:before {  content: "\e905";}
+.ing-cambiar:before {  content: "\e93c";}
+.ing-caret:before {  content: "\e90b";}
+.ing-aceptar:before {  content: "\e916";}
+.ing-cancelar:before {  content: "\e910";}
+.ing-mas:before {  content: "\e91d";}
+.ing-menos:before {  content: "\e91e";}
+.ing-editar:before {  content: "\e938";}
+.ing-buscar:before {  content: "\e939";}
+.ing-ojo:before {  content: "\e92a";}
+.ing-borrar:before {  content: "\e942";}
+.ing-basura:before {  content: "\e941";}
+.ing-camara:before {  content: "\e909";}
+.ing-importante:before {  content: "\e935";}
+.ing-bullet:before {  content: "\e943";}
+.ing-home:before {  content: "\e934";}
+.ing-formacion:before {  content: "\e914";}
+.ing-empleo:before {  content: "\e915";}
+.ing-insignia1:before {  content: "\e920";}
+.ing-insignia2:before {  content: "\e91f";}
+.ing-insignia3:before {  content: "\e921";}
+.ing-insignia4:before {  content: "\e922";}
+.ing-eventos:before {  content: "\e90a";}
+.ing-reporte:before {  content: "\e918";}
+.ing-catalogo:before {  content: "\e936";}
+.ing-evalua-cartel:before {  content: "\e913";}
+.ing-revision-cartel:before {  content: "\e90c";}
+.ing-reporte-resultados:before {  content: "\e929";}
+.ing-mi-cartel:before {  content: "\e91b";}
+.ing-galeria1:before {  content: "\e91c";}
+.ing-galeria2:before {  content: "\e925";}
+.ing-iniciar-sesion:before {  content: "\e926";}
+.ing-finalistas:before {  content: "\e927";}
+.ing-comite:before {  content: "\e92b";}
+.ing-administrador:before {  content: "\e92c";}
+.ing-estrella1:before {  content: "\e903";}
+.ing-estrella2:before {  content: "\e904";}
+.ing-carga-archivo:before {  content: "\e93d";}
+.ing-carga-multiple:before {  content: "\e93e";}
+.ing-descarga:before {  content: "\e928";}
+.ing-autorizar:before {  content: "\e92d";}
+.ing-negar:before {  content: "\e92e";}
+.ing-no-cargado:before {  content: "\e92f";}
+.ing-alumnos:before {  content: "\e91c";}
+.ing-cardex:before {  content: "\e93f";}
+.ing-configuracion:before {  content: "\e940";}
+.ing-listado-menus:before {  content: "\e944";}
+.ing-mi-cuenta:before {  content: "\e945";}
+.ing-ver:before {  content: "\e946";}
+.ing-grafica:before {content: "\e930";}
+.ing-clic:before {content: "\e931";}
+.ing-guardar:before {content: "\e937";}
+.ing-regresar:before {content: "\e93a";}
+.ing-cuadrado:before {content: "\e93b";}
+.ing-imprimir:before {content: "\e947";}
+.ing-importante2:before {content: "\e948";}
+.ing-copiar:before {content: "\e949";}
+.ing-reloj:before {content: "\e94a";}

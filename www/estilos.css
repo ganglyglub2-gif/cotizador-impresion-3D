@@ -1,135 +1,4 @@
-/* ==========================
-   ESTILO BASE ORIGINAL
-========================== */
-body {
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #2c3e50, #4ca1af);
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  padding: 20px;
-}
 
-/* CONTENEDOR PRINCIPAL */
-.contenedor {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 30px 40px;
-  width: 900px;
-  max-width: 95%;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
-
-h1 {
-  margin-bottom: 20px;
-  font-size: 1.6em;
-}
-
-/* CAMPOS DEL FORMULARIO */
-.campo {
-  margin-bottom: 15px;
-  text-align: left;
-}
-
-label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 600;
-}
-
-/* DROPDOWNS MÁS COMPACTOS */
-select {
-  width: 100%;
-  padding: 8px 10px;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-  font-size: 0.9em;
-  height: 40px; 
-}
-
-input[type="file"] {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-}
-
-
-.boton {
-  margin-top: 15px;
-  width: 60%;
-  background-color: #00b894;
-  border: none;
-  color: white;
-  font-weight: bold;
-  padding: 12px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background 0.3s;
-  font-size: 0.95em;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
-.boton:hover {
-  background-color: #019875;
-}
-
-/* ==========================
-   RESULTADOS
-========================== */
-.resultado {
-  margin-top: 25px;
-  width: 100%;
-}
-
-/* TARJETAS DE RESULTADOS */
-.card-resultado {
-  background: linear-gradient(145deg, #00b894, #019875);
-  color: #fff;
-  border-radius: 14px;
-  padding: 25px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  animation: aparecer 0.6s ease;
-  height: fit-content;
-}
-
-.card-resultado h2,
-.card-resultado h3 {
-  text-align: center;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-.res-item {
-  margin: 6px 0;
-  font-size: 1.05em;
-}
-
-.card-resultado hr {
-  border: none;
-  border-top: 1px solid rgba(255,255,255,0.4);
-  margin: 15px 0;
-}
-
-.total {
-  font-size: 1.2em;
-  text-align: center;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.card-resultado.error {
-  background: linear-gradient(145deg, #ff7675, #d63031);
-}
 
 /* BOTÓN DESCARGAR */
 .acciones {
@@ -152,23 +21,6 @@ input[type="file"] {
   background-color: #74b9ff;
 }
 
-/* ==========================
-   DOS COLUMNAS LATERALES
-========================== */
-.resultado-dos-columnas {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  margin-top: 25px;
-  width: 100%;
-}
-
-.resultado-dos-columnas .card-resultado {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-}
 
 /* ==========================
    ANIMACIÓN
@@ -269,7 +121,357 @@ input[type="file"] {
   background: linear-gradient(90deg, #00b4d8, #48cae4, #90e0ef);
   transition: width 0.2s ease-in-out;
 }
+/* ESTADO NORMAL DEL BOTÓN  */
+.btn-success {
+    /* Color de fondo  */
+    background-color: #FFFFFF !important; 
+    
+    /* Color del borde  */
+    border: 1px solid #001D68 !important; 
+    
+    /* Color del texto */
+    color: #001D68 !important; 
+}
 
+/* ESTADO HOVER  */
+/* Define lo que pasa cuando pones el mouse encima */
+.btn-success:hover {
+    /* Puedes poner un fondo gris claro para que reaccione */
+    background-color: #001D68 !important; 
+    
+    /* Mantenemos el borde */
+    border-color: #001D68 !important;
+    
+    /*Color del texto */
+    color: #FFFFFF !important; 
+}
+/* Apuntamos a los <select> que usan la clase form-control */
+select.form-control {
+   
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    /* 2.  CAMBIO: Añadimos un 'stroke-width' (grosor) al SVG */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23001D68' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z' stroke='%23001D68' stroke-width='1' /%3E%3C/svg%3E");
+    
+    background-repeat: no-repeat;
+    background-size: 16px 12px;
+
+    /* 3. Posicionamos la flecha (El "centrado + 3px") */
+    background-position: right 15px center;
+    padding-right: 40px !important;
+}
+/* =====================================
+   ESTILOS DE BOTONES DEL ACORDEÓN
+===================================== */
+
+/* 1. Resetea el botón de Bootstrap */
+#accordionResultados .btn-link {
+    position: relative; /* Necesario para el pseudo-elemento ::after */
+    width: 100%;
+    text-align: left;
+    text-decoration: none !important;
+    padding-right: 40px !important; 
+    color: #001D68 !important; 
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+#accordionResultados .btn-link:focus {
+    box-shadow: none;
+    text-decoration: none !important;
+}
+
+/* 2. Crea la flecha (el ícono) */
+#accordionResultados .btn-link::after {
+    content: ' ';
+    position: absolute;
+    right: 15px; 
+    top: 50%;
+    margin-top: -6px; 
+    width: 16px;
+    height: 12px;
+    
+    /* La flecha (mismo SVG del select con borde) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23001D68' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z' stroke='%23001D68' stroke-width='1' /%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 16px 12px;
+    
+    /* 3. LA ANIMACIÓN */
+    transition: transform 0.3s ease;
+    transform: rotate(0deg); /* Estado colapsado (flecha abajo) */
+}
+
+
+#accordionResultados .btn-link[aria-expanded="true"]::after {
+    transform: rotate(-180deg); 
+}
 @keyframes girar {
   to { transform: rotate(360deg); }
+}
+
+/* =====================================
+   ESTILOS DE LA SECCIÓN DE COTIZACIÓN 
+===================================== */
+
+
+/* Para el título "COTIZACIÓN ESTIMADA" con línea roja debajo */
+.titulo-seccion-subrayado {
+    text-align: left; /* Alineado a la izquierda */
+    margin-bottom: 25px; /* Espacio debajo del título */
+    position: relative; /* Necesario para la línea */
+}
+
+.titulo-seccion-subrayado h3 {
+    font-weight: bold;
+    color: #001D68; /* Color de texto oscuro */
+    margin-bottom: 10px; /* Pequeño espacio entre el texto y la línea */
+    display: inline-block; /* Para que la línea solo cubra el texto */
+    padding-right: 15px; /* Espacio entre el texto y el final de la línea */
+    font-style: italic;
+}
+
+.titulo-seccion-subrayado::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0; /* La línea está debajo del texto */
+    width: calc(100% + 15px); /* Ajusta este valor si la línea es muy corta o larga */
+    height: 2px; /* Grosor de la línea */
+    background-color: #d21034; /* El color rojo de tu bootstrap-ulsa.min.css */
+}
+
+/* Para los badges "Impresora: Markforged" */
+.badge-estimado-titulo {
+    font-weight: bold;
+    font-size: 1.1rem; 
+    background-color: #001d68; 
+    color: #fff;
+    padding: 12px 15px;
+    border-radius: .25rem 0 0 .25rem;
+    display: block; 
+    width: 100%;    
+    text-align: center; /* <-- CAMBIO: Centrado */
+}
+
+.badge-estimado-valor {
+    font-size: 1.1rem; 
+    background-color: #001d68; 
+    color: #fff;
+    padding: 12px 15px;
+    border-radius: 0 .25rem .25rem 0;
+    
+   
+    display: block; 
+    width: 100%;    
+    text-align: center; /* <-- CAMBIO: Centrado */
+    font-weight: bold;  /* <-- CAMBIO: Texto en negritas */
+}
+
+
+/* =====================================
+   ESTILO DE TABLAS DE COSTOS 
+===================================== */
+
+/* Estilo del Encabezado Azul (Concepto, Importe) */
+.table thead.thead-dark th {
+    background-color: #001d68;
+    border-color: #001d68;
+    
+    font-size: 1.2rem;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    
+    /* 1. TODOS los encabezados están centrados */
+    text-align: center !important;
+}
+
+
+/* Estilo de los Datos (Costo de Material, $81.98) */
+.table tbody td {
+    font-weight: bold !important; 
+    border-top: none !important; 
+    
+    /* 2. Las celdas de Importe se quedan centradas */
+    text-align: center !important;
+}
+
+/* 3. Alinea la primera celda (los conceptos) a la izquierda */
+.table tbody td:first-child {
+    text-align: left !important;
+    padding-left: 15px; /* Añade padding para que no se pegue al borde */
+}
+
+
+/* Línea vertical en el HEADER (más sutil) */
+.table thead.thead-dark th:nth-child(2) {
+    border-left: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Línea vertical en el BODY (blanca) */
+.table tbody td:nth-child(2) {
+    border-left: 1px solid #ffffff !important;
+}
+
+/* Mantenemos el fondo de las filas 'striped' (rayado) */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f7f7f7;
+}
+/* Aseguramos que las filas pares sean blancas */
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: #ffffff;
+}
+
+
+/* Estilo del Precio Final */
+.precio-final-grande {
+    color: #339933 !important; /* <-- CORREGIDO: Restaurado a Verde */
+    font-weight: bold;
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+}
+/* NUEVO: Estilos para el contenido del acordeón (wireframe) */
+.accordion-list {
+    margin: 0;
+    padding: 0;
+    color: #333; /* Color de texto oscuro */
+}
+.accordion-list li {
+    display: flex; /* Pone el label y el valor en la misma línea */
+    justify-content: space-between; /* Empuja el valor a la derecha */
+    padding: 6px 0; /* Espaciado vertical */
+    border-bottom: 1px solid #f0f0f0; /* Línea divisoria sutil */
+    font-size: 0.9rem; /* Tamaño de letra como en el wireframe */
+}
+.accordion-list li:last-child {
+    border-bottom: none; /* Sin línea en el último ítem */
+}
+/* El label (ej: "Volumen usado:") */
+.accordion-list li span:first-child {
+    font-weight: 500; /* Texto del label semi-bold */
+}
+/* El valor (ej: "12.87 cm³") */
+.accordion-list li span:last-child {
+    color: #555; /* Color del valor un poco más claro */
+}
+
+
+/* =====================================
+   ESTILOS DEL ACORDEÓN 
+===================================== */
+
+/* 1. Estilo de la "tarjeta" (línea de abajo) */
+.accordion-custom .card {
+    background: none;
+    border: none;
+    border-radius: 0;
+    /* Borde inferior para separar del contenido */
+   
+}
+
+/* 2. Estilo del 'header' */
+.accordion-custom .card-header {
+    background: none;
+    border: none;
+    padding: 0; 
+    border-radius: 0 !important;
+}
+
+/* 3. Estilo del 'botón' */
+.accordion-custom .btn-link {
+    position: relative; 
+    width: 100%;
+    text-align: left;
+    text-decoration: none !important;
+    
+    background-color: #f7f7f7 !important;  /* Fondo gris */
+    color: #001D68 !important;             /* Color azul */
+    
+    font-weight: bold !important;
+    font-style: italic !important;        
+   
+    
+    font-size: 1.2rem !important;         /* Tamaño de letra */
+    
+    padding: 0.75rem 1.25rem; 
+    padding-right: 40px !important; /* Espacio para la flecha */
+}
+
+.accordion-custom .btn-link .titulo-slicer {
+    font-weight: normal !important; /* Quita la negrita */
+}
+
+/* 5. Quitamos el subrayado al pasar el mouse */
+.accordion-custom .btn-link:hover {
+    text-decoration: none !important;
+}
+
+.accordion-custom .btn-link:focus {
+    box-shadow: none;
+    text-decoration: none !important;
+}
+
+/* 6. La flecha (ícono) */
+.accordion-custom .btn-link::after {
+    content: ' ';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -6px; /* Centra verticalmente */
+    width: 16px;
+    height: 12px;
+    
+    /* El SVG de la flecha con borde (grosor) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23001D68' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z' stroke='%23001D68' stroke-width='1' /%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 16px 12px;
+    
+    /* 7. La animación */
+    transition: transform 0.3s ease;
+    transform: rotate(0deg); /* Estado colapsado (flecha abajo) */
+}
+
+/* 8. Animación de la flecha cuando está abierto */
+.accordion-custom .btn-link[aria-expanded="true"]::after {
+    transform: rotate(-180deg); /* Estado expandido (flecha arriba) */
+}
+
+/* 9. Estilo del cuerpo (la lista) */
+.accordion-custom .card-body {
+    padding: 1rem 0; /* Padding sin afectar los lados */
+    background-color: #fff; /* Fondo blanco */
+}
+
+.accordion-list {
+    margin: 0;
+    padding: 0;
+    color: #001D68; /* Azul escuela */
+}
+.accordion-list li {
+    display: flex; 
+    justify-content: space-between;
+    padding: 6px 0; 
+    border-bottom: 1px solid #f0f0f0; 
+    font-size: 1.1rem; 
+}
+.accordion-list li:last-child {
+    border-bottom: none; 
+}
+.accordion-list li span:first-child {
+    font-weight: bold;
+    color: #001D68;
+}
+.accordion-list li span:last-child {
+    color: #001D68;
+}
+/* =====================================
+   ESTILO DEL SUBTÍTULO
+===================================== */
+
+/* Apuntamos a la clase que acabamos de añadir */
+.subtitulo-cotizador {
+    /* 16px (base) + 2px = 18px. (18/16 = 1.125rem) */
+    font-size: 1.125rem !important;
+    
 }
