@@ -237,7 +237,7 @@ session_start();
         <main class="container content marco">
             
             
-           <p class="subtitulo-cotizador">Sube tu archivo .STL, selecciona la impresora y el material para obtener una cotización estimada.</p>
+           <p class="subtitulo-cotizador">Sube tu archivo (STL, STEP, OBJ, 3MF), selecciona la impresora y el material para obtener una cotización estimada.</p>
             <hr>
             
             <form action="procesar.php" method="POST" enctype="multipart/form-data" class="formulario-cotizador">
@@ -255,8 +255,8 @@ session_start();
                 </div>
                 
                 <div class="form-group">
-                    <label for="stl_file" class="font-weight-bold">Sube tu archivo STL:</label>
-                    <input type="file" name="stl_file" id="stl_file" class="form-control-file" accept=".stl" required>
+                        <label for="stl_file" class="font-weight-bold">Sube tu archivo (STL, STEP, OBJ, 3MF):</label>
+                        <input type="file" name="stl_file" id="stl_file" class="form-control-file" accept=".stl,.step,.stp,.obj,.3mf" required>
                 </div>
                 
                 <div class="text-center">

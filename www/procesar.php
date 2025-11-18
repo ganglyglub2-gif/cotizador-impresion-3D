@@ -27,7 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo '<div class="alert alert-danger">No se pudo leer la información del G-code.</div>';
             exit;
         }
-
+        // Capturamos el nombre del STL final (por si hubo conversión)
+        $nombreArchivoFinal = $result['finalStl'] ?? basename($stlPath);
+        
         // Datos del archivo
         $margen = 0.10;
         $filamento_mm      = $result['filamentUsedMm'] ?? 0;
@@ -152,7 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         <hr>';
 
-        // ========= 2. BLOQUE DE ACORDEONES (REESTRUCTURADO LADO A LADO) =========
+        // ========= 2. BLOQUE DE ACORDEONES =========
         echo '
         <div class="row accordion-custom">
         
@@ -227,8 +229,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 ';
 
-        // === DIV OCULTO  ===
-        $stlUrl = 'uploads/' . htmlspecialchars(basename($stlPath));
+       // === DIV OCULTO
+       
+        $stlUrl = 'uploads/' . htmlspecialchars($nombreArchivoFinal);
         echo '<div id="stl-data-url" data-url="' . $stlUrl . '" style="display: none;"></div>';
 
 
